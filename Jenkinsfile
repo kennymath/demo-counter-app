@@ -10,7 +10,7 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/kennymath/demo-counter-app.git'
             }
         }
-                stage('UNIT Testing'){
+        stage('UNIT Testing'){
 
             steps{
                 sh 'mvn test'
