@@ -43,7 +43,7 @@ pipeline {
             steps{
 
                 script{
-                    waitForQualityGate abortPipeline: false, credentialsId: "SONAR"
+                    waitForQualityGate abortPipeline: false, credentialsId: 'SONAR'
                 }
             }
         }
