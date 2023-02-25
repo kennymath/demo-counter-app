@@ -78,16 +78,15 @@ pipeline {
         stage('push image to the dockerHUb'){
             steps{
                 script{
-                    withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
-                        sh 'docker login -u kentable -p ${dockerhub}'
-                        sh 'docker image push kentable/$JOB_NAME:v1.$BUILD_ID'
-                        sh 'docker image push kentable/$JOB_NAME:latest'
-
-                }
+                    withCredentials([string(credentialsId: 'dockerhub1', variable: 'docker_hub_cred')]) {
+                      sh 'docker login -u kentable -p ${docker_hub_cred}'
+                      sh 'docker image push kentable/$JOB_NAME:v1.$BUILD_ID'
+                      sh 'docker image push kentable/$JOB_NAME:latest'
+}                  
             }
         }
     }
 }
 }
 
-                       
+    
