@@ -82,11 +82,11 @@ pipeline {
                       sh 'docker login -u kentable -p ${docker_hub_cred}'
                       sh 'docker image push kentable/$JOB_NAME:v1.$BUILD_ID'
                       sh 'docker image push kentable/$JOB_NAME:latest'
-}                  
+                    }                  
+                }
             }
         }
     }
-}
 }
 
     
