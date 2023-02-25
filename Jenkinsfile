@@ -55,7 +55,7 @@ pipeline {
                     nexusUrl: '10.0.0.99:8081', 
                     nexusVersion: 'nexus3', 
                     protocol: 'http', 
-                    repository: 'emoapp-release', 
+                    repository: 'demoapp-release', 
                     version: '1.0.0'
                 }
             }
