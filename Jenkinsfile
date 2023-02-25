@@ -38,14 +38,36 @@ pipeline {
 
             }
         }
-        stage('Quality Gate status'){
+        stage('upload war file to nexus'){
 
             steps{
 
                 script{
-                    waitForQualityGate abortPipeline: false, credentialsId: 'SONAR'
+                    nexusArtifactUploader artifacts:
+                    [
+                        [artifactId: 'springboot', 
+                        classifier: '', file: 'target/Uber.jar', 
+                        type: 'jar'
+                        ]
+                    ], 
+                    credentialsId: 'Nexus-id', 
+                    groupId: 'com.example',
+                    nexusUrl: '10.0.0.99:8081', 
+                    nexusVersion: 'nexus3', 
+                    protocol: 'http', 
+                    repository: 'emoapp-release', 
+                    version: '1.0.0'
                 }
             }
         }
+     //  stage('Quality Gate status'){
+
+     //       steps{
+
+     //           script{
+     //              waitForQualityGate abortPipeline: false, credentialsId: 'SONAR'
+     //           }
+     //       }
+     //   }
     }
 }
