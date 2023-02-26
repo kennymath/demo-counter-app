@@ -10,6 +10,17 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/kennymath/demo-counter-app.git'
             }
         }
+        stage ('Check-Git-Secrets') {
+		    steps {
+                script{
+                    sh 'rm trufflesecurity/trufflehog:latest || true'
+                    sh 'docker run --rm -t -v "$PWD:/pwd" trufflesecurity/trufflehog:latest github --repo https://github.com/kennymath/demo-counter-app.git --debug > trufflehog'
+                    sh 'cat trufflehog'
+
+                }
+	         
+	       }
+        }
         stage('UNIT Testing'){
 
             steps{
